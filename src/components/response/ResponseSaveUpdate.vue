@@ -131,9 +131,6 @@ export default {
                 }
                 this.loader = false;
             })
-            .catch(error => {
-                console.log(error)
-            })
         },
         getSingleSurvey(){
             this.loader = true;
@@ -175,7 +172,7 @@ export default {
                     email: this.responder.email,
                     created_at: new window.Date()
                 })
-                .then(docRef => {
+                .then(() => {
                     this.loader = false;
                     this.enableToast = true;
                     this.toastText = "Response saved successfully."
@@ -184,9 +181,6 @@ export default {
                         this.enableToast = false;
                         this.$router.push({name:'Survey List'})
                     }, 2000);
-                })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
                 })
             }
 		}

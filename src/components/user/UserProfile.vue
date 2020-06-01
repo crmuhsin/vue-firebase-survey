@@ -58,7 +58,6 @@ export default {
                 this.newUser.displayName = user.displayName;
                 this.newUser.email = user.email;
                 this.loader = false;
-                console.log(user);
             })
         },
         updateProfileData(){
@@ -77,8 +76,7 @@ export default {
                 setTimeout(() => {
                     this.enableToast = false;
                 }, 2000);
-            }).catch(function(error) {
-            });
+            })
         }
     }
 };

@@ -77,17 +77,17 @@ export const validators = {
         }
     },
     responseSave(data) {
-        if (formData.email && formData.name) {
+        if (data.email && data.name) {
             let re = /\S+@\S+\.\S+/;
-            if (!re.test(formData.email)) {
+            if (!re.test(data.email)) {
                 return 'Invalid Email';
             }
             return '';
         }
-        else if (!formData.name) {
+        else if (!data.name) {
             return 'Name required.';
         }
-        else if (!formData.email) {
+        else if (!data.email) {
             return 'Email required.';
         }
     },

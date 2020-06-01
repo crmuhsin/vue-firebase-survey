@@ -28,9 +28,9 @@
 </span>
 </template>
 <script>
-import {url} from '@/urls';
-import {service} from '@/services';
-import * as _ from 'underscore';
+// import {url} from '@/urls';
+// import {service} from '@/services';
+// import * as _ from 'underscore';
 
 export default {
     name: 'ShareSurvey',
@@ -53,21 +53,21 @@ export default {
                 this.error = 'Invalid Email';
                 return ;
             }
-            let data = _.clone(this.data);
-            service.onPost(url.auth_user_check_user, data)
-            .then(result => {
-                if (result.data.rowCount > 0 ) {
-                    this.error = '';
-                    setTimeout(() => {
-                        this.closeOneModal();
-                        this.shareThisSurvey();
-                    }, 1000);
-                } else {
-                    this.error = "this email does not exist."
-                }
-            }).catch(error => {
-                console.log(error)
-            })
+            // let data = _.clone(this.data);
+            // service.onPost(url.auth_user_check_user, data)
+            // .then(result => {
+            //     if (result.data.rowCount > 0 ) {
+            //         this.error = '';
+            //         setTimeout(() => {
+            //             this.closeOneModal();
+            //             this.shareThisSurvey();
+            //         }, 1000);
+            //     } else {
+            //         this.error = "this email does not exist."
+            //     }
+            // }).catch(error => {
+            //     console.log(error)
+            // })
         },
         closeOneModal() {
             const modal = document.getElementById('shareModal');
@@ -79,31 +79,31 @@ export default {
         },
         async shareThisSurvey(){
             this.data.slug = this.$route.params.survey;
-            let body = _.clone(this.data);
-            service.onPost(url.survey_share, body)
-            .then(result => {
-                if (result.status != 200){
-                    this.emmited = {
-                        color: 'red',
-                        toastText: "Something Went wrong"
-                    }
-                } else if(result.data.mycode == 2) {
-                    this.emmited = {
-                        color: 'green',
-                        toastText: result.data.message
-                    }
-                }
-                else{
-                    this.emmited = {
-                        color: 'green',
-                        toastText: "Survey shared successfully."
-                    }
-                } 
-                this.data = {}
-                this.$emit("shareData", this.emmited);
-            }).catch(error => {
-                console.log(error)
-            })
+            // let body = _.clone(this.data);
+            // service.onPost(url.survey_share, body)
+            // .then(result => {
+            //     if (result.status != 200){
+            //         this.emmited = {
+            //             color: 'red',
+            //             toastText: "Something Went wrong"
+            //         }
+            //     } else if(result.data.mycode == 2) {
+            //         this.emmited = {
+            //             color: 'green',
+            //             toastText: result.data.message
+            //         }
+            //     }
+            //     else{
+            //         this.emmited = {
+            //             color: 'green',
+            //             toastText: "Survey shared successfully."
+            //         }
+            //     } 
+            //     this.data = {}
+            //     this.$emit("shareData", this.emmited);
+            // }).catch(error => {
+            //     console.log(error)
+            // })
         }
     },
   };

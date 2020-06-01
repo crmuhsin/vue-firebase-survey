@@ -32,10 +32,7 @@
 </template>
 
 <script>
-import {url} from "@/urls";
 import {auth} from '@/services';
-import * as _ from 'underscore';
-import { validators } from '@/services/validators';
 
 export default {
 	data(){
@@ -57,7 +54,6 @@ export default {
 				auth
 				.signInWithEmailAndPassword(this.formData.email, this.formData.password)
 				.then((user) => {
-					console.log(user);
 					localStorage.setItem('user', user.user.uid)
 					setTimeout( () => this.$router.push({name:'Dashboard'}), 1000);
 				})
@@ -70,7 +66,6 @@ export default {
 					} else {
 						this.error = errorMessage;
 					}
-					console.log(error);
 					this.loader = false;
 				});
 			}

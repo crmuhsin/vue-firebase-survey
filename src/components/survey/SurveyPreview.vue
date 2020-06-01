@@ -53,13 +53,13 @@
 
 <script>
 import {db} from '@/services';
-import { validators } from '@/services/validators';
 import { CheckBox, Date, LongText, Radio, Rating, ShortText, Time } from './../QTypes';
-import ShareSurvey from './ShareSurvey';
+// import ShareSurvey from './ShareSurvey';
 
 export default {
     components:{
-        CheckBox, Date, LongText, Radio, Rating, ShortText, Time, ShareSurvey
+        CheckBox, Date, LongText, Radio, Rating, ShortText, Time
+        // , ShareSurvey
     },
     data() {
         return {
@@ -97,14 +97,13 @@ export default {
                     if (this.$route.params.survey == doc.data().slug) {
                         this.questions = JSON.parse(doc.data().fullquestion);
                         // this.questionid = doc.id;
-                        console.log(this.questions);
                     }
                 });
                 this.loader = false;
             })
-            .catch(error => {
-                console.log(error)
-            })
+            // .catch(error => {
+            //     console.log(error)
+            // })
         },
         getSingleSurvey(){
             db.collection("surveys").get()
@@ -135,9 +134,9 @@ export default {
                     this.getSingleSurvey();
                 }, 1000);
             })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
+            // .catch(function(error) {
+            //     console.error("Error adding document: ", error);
+            // });
         }
     }
 };

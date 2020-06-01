@@ -4,10 +4,9 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-
 const firebaseConfig = {
-    apiKey: "AIzaSyCmpyAod7h471_8ZMrI3QV6QQX-DCYyXpg",
-    projectId: "survey-vue"
+    apiKey: process.env.VUE_APP_API_KEY,
+    projectId: process.env.VUE_APP_PROJECT_ID
 };
 
 // Initialize Firebase

@@ -42,10 +42,7 @@ export default {
 				// Sign-out successful.
 				localStorage.clear();
 				setTimeout( () => this.$router.push({name:'Login'}), 1000);
-			}).catch(error => {
-				// An error happened.
-				console.log(error);
-			});
+			})
 		}
 	},
 	computed:{

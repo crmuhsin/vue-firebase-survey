@@ -40,10 +40,7 @@
 </template>
 
 <script>
-import {url} from "@/urls";
 import {auth} from '@/services';
-import * as _ from 'underscore';
-import { validators } from '@/services/validators';
 
 export default {
 	data(){
@@ -80,7 +77,6 @@ export default {
 				} else {
 					this.error = errorMessage;
 				}
-				console.log(error);
 			});
         }
 	}

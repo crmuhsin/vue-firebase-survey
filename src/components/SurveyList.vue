@@ -73,9 +73,9 @@ export default {
 
                 this.loader = false;
             })
-            .catch((err) => {
-                console.log('Error getting documents', err);
-            });
+            // .catch((err) => {
+            //     console.log('Error getting documents', err);
+            // });
         },
         searchTable() {
             this.surveys = searchFn.mySearch(this.searchText, this.searchSurveys);

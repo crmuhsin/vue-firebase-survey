@@ -95,7 +95,6 @@ export default {
                         this.responses.push({responseId: doc.id, ...res});
                     }
                 });
-                console.log(this.responses);
                 this.searchResponses = this.responses;              
                 this.loader = false;
             });
@@ -134,7 +133,7 @@ export default {
         },
         createPdf(texts){
             let docDefinition = {
-                header: function(currentPage, pageCount) { 
+                header: function(currentPage) { 
                     return [{ 
                         text: currentPage.toString(), 
                         alignment: (currentPage % 2) ? 'right' : 'left', 

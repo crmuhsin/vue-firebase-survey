@@ -136,15 +136,12 @@ export default {
                         this.questionId = doc.id;
                         this.isUpdate = true;
                         this.buttonText = "Update"
-                        this.questions.forEach(item => {
+                        this.questions.forEach(() => {
                             this.updateQuestion.push({indx:false});
                         });
                     }
                 });
                 this.loader = false;
-            })
-            .catch(error => {
-                console.log(error)
             })
         },
         updateQuestionFn(index, bool){
@@ -186,27 +183,22 @@ export default {
         },
         saveNewQuestions(){
             db.collection("questions").add({
-                    slug: this.$route.params.survey,
-                    fullquestion: JSON.stringify(this.questions)
-                })
-                .then(docRef => {
-                    console.log("Document written with ID: ", docRef.id);
-                    this.loader = false;
-                    this.enableToast = true;
-                    this.color = 'green';
-                    this.toastText = "Questions saved successfully."
-                    setTimeout(() => {
-                        this.$router.push({
-                            name:'Survey Preview', 
-                            params:{survey:this.$route.params.survey}
-                        })
-                        this.enableToast = false;
-                    }, 3000);
-                })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
-                });
-                
+                slug: this.$route.params.survey,
+                fullquestion: JSON.stringify(this.questions)
+            })
+            .then(() => {
+                this.loader = false;
+                this.enableToast = true;
+                this.color = 'green';
+                this.toastText = "Questions saved successfully."
+                setTimeout(() => {
+                    this.$router.push({
+                        name:'Survey Preview', 
+                        params:{survey:this.$route.params.survey}
+                    })
+                    this.enableToast = false;
+                }, 3000);
+            })                
         },
         updateOldQuestions(){
             this.loader = true;
@@ -226,9 +218,6 @@ export default {
                     this.enableToast = false;
                 }, 3000);
             })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
         }
     }
 }

@@ -70,9 +70,6 @@ export default {
                     });
                     this.surveySaveUpdate();
                 })
-                .catch((err) => {
-                    console.log('Error getting documents', err);
-                });
             }
         },
         surveySaveUpdate(){
@@ -85,8 +82,7 @@ export default {
                     userid: this.user.uid,
                     username: this.user.displayName
                 })
-                .then(docRef => {
-                    console.log("Document written with ID: ", docRef.id);
+                .then(() => {
                     this.loader = false;
                     this.enableToast = true;
                     this.color = 'green';
@@ -95,9 +91,6 @@ export default {
                         this.enableToast = false;
                     }, 3000);
                 })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
-                });
                 
 			}
 		}
